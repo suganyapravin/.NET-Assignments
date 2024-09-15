@@ -28,14 +28,14 @@ namespace EmpAttendanceR1
         }
 
         //UPDATE
-        public List<T> UpdateById(List<T> lstobj,int id)
+        public List<T> UpdateById(List<T> lstobj, int id)
         {
             //pass entity object and update the database 
-           var rs = lstobj.Find(x => x.Id == id);
-           lstobj.Remove(rs);
-           rs.ModifiedBy = "Some other job";           
-           lstobj.Add(rs);           
-           return lstobj;
+            var rs = lstobj.Find(x => x.Id == id);
+            lstobj.Remove(rs);
+            rs.ModifiedBy = "*****job 2*****";
+            lstobj.Add(rs);
+            return lstobj;
         }
 
         //DELETE
@@ -45,7 +45,7 @@ namespace EmpAttendanceR1
             var rs = lstobj.Find(x => x.Id == id);
             lstobj.Remove(rs);
             return lstobj;
-        }
+        }       
 
     }
 }

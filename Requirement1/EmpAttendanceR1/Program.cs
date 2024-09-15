@@ -27,8 +27,7 @@ namespace EmpAttendanceR1
             Employee e4 = new Employee("Mani", "Grade 1", 1);
 
             //for create
-            Employee e5 = new Employee("Suman", "Grade 4", 1);
-            
+            Employee e5 = new Employee("Suman", "Grade 4", 1);          
 
             List<Employee> lsemp = new List<Employee>();
             lsemp.Add(e1);
@@ -119,7 +118,7 @@ namespace EmpAttendanceR1
                 Console.WriteLine("CREATE Manager List");
                 foreach (var i in mncreate)
                 {
-                    Console.WriteLine($"{i.Id} - {i.DepartmentID} - {i.ModifiedBy}");
+                    Console.WriteLine($"ID :{i.Id} - DeptId: {i.DepartmentID} - {i.ModifiedBy}");
                 }
             }
 
@@ -129,7 +128,7 @@ namespace EmpAttendanceR1
             if (read != null)
             {
                 Console.WriteLine("READ Manager List");
-                Console.WriteLine($"{read.Id} - {read.DepartmentID} - {read.ModifiedBy}");
+                Console.WriteLine($"ID:{read.Id} -DeptId : {read.DepartmentID} - {read.ModifiedBy}");
             }
             else
             {
@@ -145,7 +144,7 @@ namespace EmpAttendanceR1
                 foreach (var i in update)
                 {
 
-                    Console.WriteLine($"{i.Id}  - {i.DepartmentID}   - {i.ModifiedBy}");
+                    Console.WriteLine($"ID:{i.Id}  - Dept Id :{i.DepartmentID}   - {i.ModifiedBy}");
                 }
             }
 
@@ -157,7 +156,7 @@ namespace EmpAttendanceR1
                 Console.WriteLine("DELETE Manager List");
                 foreach (var i in delete)
                 {
-                    Console.WriteLine($"{i.Id} - c{i.DepartmentID} - {i.ModifiedBy}");
+                    Console.WriteLine($"ID: {i.Id} - Dept Id :{i.DepartmentID} - {i.ModifiedBy}");
                 }
             }
 
@@ -190,7 +189,7 @@ namespace EmpAttendanceR1
                 Console.WriteLine("CREATE Department List");
                 foreach (var i in create)
                 {
-                    Console.WriteLine($"{i.Id} - {i.DepartmentName} - {i.ModifiedBy}");
+                    Console.WriteLine($"ID :{i.Id} - Dept Name : {i.DepartmentName} - {i.ModifiedBy}");
                 }
             }
 
@@ -200,7 +199,7 @@ namespace EmpAttendanceR1
             if (read != null)
             {
                 Console.WriteLine("READ Department List");
-                Console.WriteLine($"{read.Id} - {read.DepartmentName} - {read.ModifiedBy}");
+                Console.WriteLine($"ID :{read.Id} - Dept Name :{read.DepartmentName} - {read.ModifiedBy}");
             }
             else
             {
@@ -216,7 +215,7 @@ namespace EmpAttendanceR1
                 foreach (var i in update)
                 {
 
-                    Console.WriteLine($"{i.Id}  - {i.DepartmentName}   - {i.ModifiedBy}");
+                    Console.WriteLine($"ID :{i.Id}  - Dept Name :{i.DepartmentName}   - {i.ModifiedBy}");
                 }
             }
 
@@ -228,7 +227,7 @@ namespace EmpAttendanceR1
                 Console.WriteLine("DELETE Department List");
                 foreach (var i in delete)
                 {
-                    Console.WriteLine($"{i.Id} - {i.DepartmentName} - {i.ModifiedBy}");
+                    Console.WriteLine($"ID : {i.Id}  - Dept Name : {i.DepartmentName} - {i.ModifiedBy}");
                 }
             }
 
