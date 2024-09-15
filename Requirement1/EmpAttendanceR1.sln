@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35201.131
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmpAttendanceR1", "EmpAttendanceR1\EmpAttendanceR1.csproj", "{177CAC7B-53A0-4A8B-9CDE-F201CDD98C61}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{177CAC7B-53A0-4A8B-9CDE-F201CDD98C61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{177CAC7B-53A0-4A8B-9CDE-F201CDD98C61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{177CAC7B-53A0-4A8B-9CDE-F201CDD98C61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{177CAC7B-53A0-4A8B-9CDE-F201CDD98C61}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EF87D12F-93F6-460E-9C35-09A4BAFC0439}
+	EndGlobalSection
+EndGlobal
