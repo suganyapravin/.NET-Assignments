@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EmpAttendanceR1
 {
-    public class GenericCRUD<T> where T : BaseEntity
+    public class GenericCRUD<T> : IGenericCRUD<T> where T : BaseEntity 
     {
        
         //CREATE
