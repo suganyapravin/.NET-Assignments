@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EmpAttendanceR1.VIEW;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,12 +11,12 @@ namespace EmpAttendanceR1
     {
         static void Main(string[] args)
         {
-            EmployeePresentation.EmployeeCRUD();
-            EmployeePresentation.ManagerCRUD();
-            EmployeePresentation.DepartmentCRUD();           
+            EmployeeView.EmployeeCRUD();
+            ManagerView.ManagerCRUD();
+            DepartmentView.DepartmentCRUD();
+            DepartmentView_Linkedlist.DepartmentCRUD();
             Console.ReadLine();
         }
-
      
     }
 }

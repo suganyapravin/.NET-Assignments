@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Runtime.Versioning;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,39 +14,36 @@ namespace EmpAttendanceR1
     {
        
         //CREATE
-        public List<T> Create(List<T> lstobj, T obj)
+        public IEnumerable<T> Create(IEnumerable<T> lstobj, T obj)
         {
             //pass the entity object and make an entry in db
-            lstobj.Add(obj);
+            lstobj = lstobj.Append(obj);
             return lstobj;
         }
-        
+      
         //READ
-        public T GetById(List<T> lstobj,int id)
+        public IEnumerable<T> GetById(IEnumerable<T> lstobj,int id)
         {
             //pass id and retrieve the data pertaining to id
-            return lstobj.Find(x => x.Id == id);
-
+            return lstobj.Where(x => x.Id == id);
         }
 
         //UPDATE
-        public List<T> UpdateById(List<T> lstobj, int id)
+        public IEnumerable<T> UpdateById(IEnumerable<T> lstobj, T obj)
         {
             //pass entity object and update the database 
-            var rs = lstobj.Find(x => x.Id == id);
-            lstobj.Remove(rs);
-            rs.ModifiedBy = "*****job 2*****";
-            lstobj.Add(rs);
-            return lstobj;
+            var rs = lstobj.Where(x => x.Id != obj.Id).AsEnumerable();
+            var temp = lstobj.Where(x => x.Id == obj.Id);
+            return rs.Append(obj);
+           
         }
 
         //DELETE
-        public List<T> DeleteById(List<T> lstobj,int id)
+        public IEnumerable<T> DeleteById(IEnumerable<T> lstobj,int id)
         {
             //pass id and delete the data pertaining to id
-            var rs = lstobj.Find(x => x.Id == id);
-            lstobj.Remove(rs);
-            return lstobj;
+            var rs = lstobj.Where(x => x.Id != id).ToList();            
+            return rs.AsEnumerable();
         }       
 
     }
