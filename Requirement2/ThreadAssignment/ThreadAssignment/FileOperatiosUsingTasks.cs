@@ -53,12 +53,12 @@ namespace ThreadAssignment
                 processeddata = string.Join(" ", words);
 
                 //Console.WriteLine(modifiedText);
-                //WriteToFile(processeddata);
+                WriteToFile(processeddata, file);
              
-                Task task2 = new Task(() => {
-                    WriteToFile(processeddata,file);
-                });
-                task2.Start();
+                //Task task2 = new Task(() => {
+                //    WriteToFile(processeddata,file);
+                //});
+                //task2.Start();
 
             }
       
