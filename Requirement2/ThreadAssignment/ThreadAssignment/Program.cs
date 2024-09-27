@@ -12,8 +12,8 @@ namespace ThreadAssignment
 
         static void Main(string[] args)
         {
-           // FileOperationsasyn asynfileops = new FileOperationsasyn();
-           // asynfileops.ReadFile();
+           FileOperationsasyn asynfileops = new FileOperationsasyn();
+           asynfileops.ReadFile();
 
            FileOperatiosUsingTasks tsk = new FileOperatiosUsingTasks();
             tsk.ReadAllFilesNamesFromPath();
