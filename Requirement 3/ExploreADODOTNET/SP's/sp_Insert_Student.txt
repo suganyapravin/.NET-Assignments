@@ -1,0 +1,20 @@
+USE [TestDB]
+GO
+
+/****** Object:  StoredProcedure [dbo].[sp_Insert_Student]    Script Date: 10/5/2024 10:51:11 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE proc [dbo].[sp_Insert_Student]
+@StudentName varchar(100),
+@GradeName varchar(100)
+as
+begin
+insert into student(StudentName ,GradeId ) values (@StudentName , (select GradeId from Grade where GradeName = @GradeName))
+end
+GO
+
+

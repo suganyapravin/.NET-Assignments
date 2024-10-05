@@ -10,22 +10,26 @@ namespace EmpAttendanceR1
 {
     public abstract class BaseEntity
     {
-        
-        public int Id { get; set; }       
-        public string ModifiedBy { get; set; }
-        public DateTime ModifiedDate { get; set; }
-       
+
+
+        public  int Id { get; }    
+        public string ModifiedBy
+        {
+            get { return "job 1"; }           
+        }
+        public DateTime ModifiedDate
+        {
+            get { return DateTime.Now; }
+        }       
         public BaseEntity()
         {
-            Id = IDGenerator.GenerateId();
-            ModifiedBy = "job 1";
-            ModifiedDate = DateTime.Now;
+           Id = IDGenerator.GenerateId();          
         }
+
     }
     public class IDGenerator
     {
         private static int lastId = 0;
-
         public static int GenerateId()
         {
             return Interlocked.Increment(ref lastId);

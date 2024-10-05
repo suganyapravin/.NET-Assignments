@@ -1,0 +1,20 @@
+USE [TestDB]
+GO
+
+/****** Object:  StoredProcedure [dbo].[sp_Update_Grade]    Script Date: 10/5/2024 10:48:34 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+create proc [dbo].[sp_Update_Grade]
+@GradeId int,
+@GradeName varchar(100)
+as
+begin
+update Grade set GradeName = @GradeName where GradeId = @GradeId
+end
+GO
+
+
