@@ -13,7 +13,9 @@ namespace ExploreADODOTNET.DAL
         public bool Create(T obj);
         public bool Update(T obj);
         public bool DeleteById(int id);
-        public DataTable GetAll();
+        public List<T> GetAll();
+
+       // public DataTable GetAll();
 
     }
 }

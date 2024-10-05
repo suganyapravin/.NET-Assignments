@@ -91,13 +91,24 @@ namespace ExploreADODOTNET.BL
 
         public void ListGrades()
         {
-            DataTable data = gradeCRUD.GetAll();
+            List<Grade> lstgrade = new List<Grade>();
 
-            Console.WriteLine("GradeId - GradeName");
-            foreach (DataRow row in data.Rows)
+            lstgrade = gradeCRUD.GetAll();
+
+            Console.WriteLine("Id - Grade Name");
+            foreach (var grade in lstgrade)
             {
-               Console.WriteLine($"{row[0]} - {row[1]}");
+                Console.WriteLine($"{grade.GradeId} - {grade.GradeName}");
             }
+
+            // DataTable data = gradeCRUD.GetAll();
+
+            //  Console.WriteLine("GradeId - GradeName");
+            //   foreach (DataRow row in data.Rows)
+            //   {
+            //     Console.WriteLine($"{row[0]} - {row[1]}");
+            //  }
+
         }
 
         public void DeleteGrade()

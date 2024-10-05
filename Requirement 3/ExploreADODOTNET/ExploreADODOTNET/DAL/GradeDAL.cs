@@ -101,9 +101,9 @@ namespace ExploreADODOTNET.DAL
 
         }
 
-        public DataTable GetAll()
+        public List<T> GetAll()
         {
-            List<T> lstT = new List<T>();
+            List<Grade> lstgrade = new List<Grade>();           
 
             using (var sqlCon = new SqlConnection(conStr))
             {
@@ -116,9 +116,22 @@ namespace ExploreADODOTNET.DAL
                     sqlCon.Open();
 
                     var reader = sqlCmd.ExecuteReader();
-                    var dt = new DataTable();
-                    dt.Load(reader);
-                    return dt;
+
+                    while (reader.Read())
+                    {
+                        Grade grade = new Grade();
+                        grade.GradeId = (int)reader[0];
+                        grade.GradeName = reader[1].ToString();
+                        lstgrade.Add(grade);
+                    }
+
+                    List<T> targetList = new List<T>(lstgrade.Cast<T>());
+
+                    //var dt = new DataTable();
+                    //dt.Load(reader);
+                    //return dt;
+
+                    return targetList;
 
                 }
             }
