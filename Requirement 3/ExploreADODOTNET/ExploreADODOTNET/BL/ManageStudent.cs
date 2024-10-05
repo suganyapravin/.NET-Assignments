@@ -81,7 +81,6 @@ namespace ExploreADODOTNET.BL
                     Console.WriteLine("Student Added Successfully");
                     ListStudents();
                     break;
-
                 }
                 else
                 {
@@ -93,13 +92,22 @@ namespace ExploreADODOTNET.BL
 
         public void ListStudents()
         {
-            DataTable data = stuCRUD.GetAll();
+            List<Student> lstStud = new List<Student>();
 
+            lstStud = stuCRUD.GetAll();
+            
             Console.WriteLine("Id - Name - Grade");
-            foreach (DataRow row in data.Rows)
+            foreach (var student in lstStud)
             {
-               Console.WriteLine($"{row[0]} - {row[1]} - {row[2]}");
+                Console.WriteLine($"{student.StudentId} - {student.StudentName} - {student.Grade}");
             }
+
+            //DataTable data = stuCRUD.GetAll();
+            //Console.WriteLine("Id - Name - Grade");
+            //foreach (DataRow row in data.Rows)
+            //{
+            //   Console.WriteLine($"{row[0]} - {row[1]} - {row[2]}");
+            //}
         }
 
         public void DeleteStudent()

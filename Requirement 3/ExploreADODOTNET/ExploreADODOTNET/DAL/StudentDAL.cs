@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using ExploreADODOTNET.Entity;
 using System.Reflection.Metadata.Ecma335;
+using System.Runtime.CompilerServices;
 
 namespace ExploreADODOTNET.DAL
 {
@@ -124,10 +125,10 @@ namespace ExploreADODOTNET.DAL
 
         }
 
-        public DataTable GetAll()
+        public List<T> GetAll()
         {
-           List<T> lstT = new List<T>();
-
+            List<Student> lstStud = new List<Student>();
+          
             using (var sqlCon = new SqlConnection(conStr))
             {
                 using (var sqlCmd = new SqlCommand())
@@ -139,9 +140,23 @@ namespace ExploreADODOTNET.DAL
                     sqlCon.Open();
 
                     var reader = sqlCmd.ExecuteReader();
-                    var dt = new DataTable();
-                    dt.Load(reader);
-                    return dt;                  
+                    
+                    while (reader.Read())
+                    {
+                        Student student = new Student();
+                        student.StudentId = (int)reader[0];
+                        student.StudentName = reader[1].ToString();
+                        student.Grade = reader[2].ToString();
+                        lstStud.Add(student);
+                    }
+
+                    List<T> targetList = new List<T>(lstStud.Cast<T>());
+
+                    // var dt = new DataTable();
+                    //dt.Load(reader);
+                    // return dt;
+
+                    return targetList;
 
                     }  
                 }
