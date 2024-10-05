@@ -1,0 +1,18 @@
+USE [TestDB]
+GO
+
+/****** Object:  StoredProcedure [dbo].[sp_GetAll_Student]    Script Date: 10/5/2024 10:47:35 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+create proc [dbo].[sp_GetAll_Student]
+as
+begin
+select studentid,studentname,gradename from student, Grade where student.gradeid = Grade.gradeid
+end
+GO
+
+

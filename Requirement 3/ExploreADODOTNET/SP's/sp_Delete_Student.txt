@@ -1,0 +1,20 @@
+USE [TestDB]
+GO
+
+/****** Object:  StoredProcedure [dbo].[sp_Delete_Student]    Script Date: 10/5/2024 10:49:48 AM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+create proc [dbo].[sp_Delete_Student]
+@StudentId int
+
+as
+begin
+delete from student where studentid = @StudentId 
+end
+GO
+
+
