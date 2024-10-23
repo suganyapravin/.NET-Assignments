@@ -21,10 +21,27 @@ namespace UserLogin
                 Console.WriteLine("Enter UserName/Email to Continue : ");
                 string input1 = Console.ReadLine();
                 Console.WriteLine("Enter Password :");
-                string input2 = Console.ReadLine();
+                string input2 = "";               
+                while (true)
+                {
+                    var key = System.Console.ReadKey(true);
+                    if (key.Key == ConsoleKey.Backspace && input2.Length > 0)
+                    {
+                        Console.Write("\b \b");
+                        input2 = input2[0..^1];
+                    }
+                    else if (key.Key == ConsoleKey.Enter)
+                    {
+                        break;
+                    }
+                    else {
 
+                        input2 += key.KeyChar;
+                        Console.Write("*");
+                    }
+                }
                 bool res = manageUser.AuthenticateUser(input1, input2);
-
+                Console.WriteLine("");
                 if (res)
 
                 {
