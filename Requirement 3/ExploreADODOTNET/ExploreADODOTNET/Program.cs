@@ -9,10 +9,12 @@ namespace ExploreADODOTNET
 {
     public class Program
     {
+       
         static void Main(string[] args)
         {
             ManageStudent manageStudent = new ManageStudent();
             ManageGrade managegrade = new ManageGrade();
+            ManageSubject managesubject = new ManageSubject();
 
             int number;
             
@@ -21,6 +23,7 @@ namespace ExploreADODOTNET
                 Console.WriteLine("Select from below ::");
                 Console.WriteLine("1. Student Info");
                 Console.WriteLine("2.Grade Info");
+                Console.WriteLine("3.Subject Info");
 
                 string input = Console.ReadLine();
                 if (int.TryParse(input, out number))
@@ -32,6 +35,9 @@ namespace ExploreADODOTNET
                             break;
                         case 2:
                             managegrade.GradeMenu();
+                            break;
+                        case 3:
+                            managesubject.SubjectMenu();
                             break;
                         default:
                             Console.WriteLine("Invalid Entry");
@@ -46,6 +52,11 @@ namespace ExploreADODOTNET
 
             }
 
-        }
+        }             
+
+    }
+    static class Globals
+    {
+        public static int StudentId;
     }
 }

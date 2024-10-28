@@ -16,6 +16,8 @@ namespace ExploreADODOTNET.BL
     {
 
         IGenericDAL<Student> stuCRUD = new StudentDAL<Student>();
+        IGenericDAL<Subject> subCRUD = new SubjectDAL<Subject>();
+
         public void StudentMenu()
         {
             int number;
@@ -93,6 +95,7 @@ namespace ExploreADODOTNET.BL
         public void ListStudents()
         {
             List<Student> lstStud = new List<Student>();
+            List<Subject> lstSub = new List<Subject>();
 
             lstStud = stuCRUD.GetAll();
             
@@ -100,14 +103,17 @@ namespace ExploreADODOTNET.BL
             foreach (var student in lstStud)
             {
                 Console.WriteLine($"{student.StudentId} - {student.StudentName} - {student.Grade}");
+                Globals.StudentId = student.StudentId;
+                lstSub = subCRUD.GetAll();
+                Console.WriteLine("Subjects List:::");
+                Console.WriteLine("");
+                foreach (var sub in lstSub)
+                {
+                    Console.WriteLine($"{sub.Name}");
+                }
+                  
             }
-
-            //DataTable data = stuCRUD.GetAll();
-            //Console.WriteLine("Id - Name - Grade");
-            //foreach (DataRow row in data.Rows)
-            //{
-            //   Console.WriteLine($"{row[0]} - {row[1]} - {row[2]}");
-            //}
+            
         }
 
         public void DeleteStudent()
@@ -122,7 +128,6 @@ namespace ExploreADODOTNET.BL
                     Console.WriteLine("Student Deleted Successfully");
                     ListStudents();
                     break;
-
                 }
                 else
                 {

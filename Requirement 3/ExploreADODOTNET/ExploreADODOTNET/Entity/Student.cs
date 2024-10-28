@@ -12,6 +12,7 @@ namespace ExploreADODOTNET.Entity
     {
             public int StudentId {  get; set; }
             public string StudentName { get; set; }
-            public string Grade{ get; set; }    
+            public string Grade { get; set; }
+            public List<Subject> Subject { get; set; }
     }
 }
