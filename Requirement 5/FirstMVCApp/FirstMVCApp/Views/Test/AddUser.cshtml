@@ -1,0 +1,52 @@
+﻿
+    @model FirstMVCApp.ViewModel.UserViewModel
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FirstMVCApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/FirstMVCApp.styles.css" asp-append-version="true" />
+</head>
+<body>
+
+    <form method="post">
+        <h1>Add User</h1>
+
+        <div class="mt-3">
+            <label class="form-label">First Name</label>
+            <input type="text" class="form-control" name="FirstName" />
+        </div>
+
+        <div class="mt-3">
+            <label class="form-label">Last Name</label>
+            <input type="text" class="form-control" name="LastName" />
+        </div>
+
+        <div class="mt-3">
+            <label class="form-label">Phone Number</label>
+            <input type="text" class="form-control" name="PhoneNumber" />
+        </div>
+
+
+        <div class="mt-3">
+            <label class="form-label">Email</label>
+            <input type="text" class="form-control" name="EmailID" />
+        </div>
+
+
+        <div class="mt-3">
+            <input type="radio" class="form-check-input" value='m' name="Gender" />
+            <label class="form-label">Male</label>
+
+            <input type="radio" class="form-check-input" value='f' name="Gender" />
+            <label class="form-label">Female</label>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Test")'" >Back</button>
+        </div>
+        <div></div>      
+
+    </form>
+</body>

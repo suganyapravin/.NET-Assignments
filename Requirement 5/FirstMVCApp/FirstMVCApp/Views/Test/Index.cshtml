@@ -1,0 +1,19 @@
+﻿
+
+@{
+    ViewData["Title"] = "Welcome to User Details Page..";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Following operations can be performed</p>
+<div></div>
+
+<div></div>
+<div></div>
+<button type="button" id="loadData" onclick="location.href='@Url.Action("AddUser", "Test")'">
+    Add User
+</button> 
+<div></div>
+<button type="button" id="loadData" onclick="location.href='@Url.Action("List", "Test")'">
+    User List
+</button>
