@@ -1,5 +1,46 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model FirstMVCApp.ViewModel.UserViewModel
+<h3>Edit User</h3>
+
+<form method="post">
+    <fieldset>
+        @Html.HiddenFor(m => m.UserViewModelID)
+        <div>
+            <label  class="form-label mt-4">First Name</label>
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+        </div>
+        <div>
+            <label  class="form-label mt-4">Last Name</label>
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+        </div>
+
+        <div>
+            <label  class="form-label mt-4">Email Id</label>
+            @Html.TextBoxFor(m => m.EmailID, new { @class = "form-control" })
+        </div>
+        <div>
+            <label class="form-label mt-4">Phone Number</label>
+            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+        </div>        
+      
+        <div>           
+            @if (Model.Gender == 'm')
+            {
+
+                @Html.RadioButton("Gender", 'm', true, new { @class = "form-control", @id = "Gender" })
+                @Html.Label("Male", "Male")
+                @Html.RadioButton("Gender", 'f', false, new { @class = "form-control", @id = "Gender" })
+                @Html.Label("Female", "Female")               
+              
+            }
+            else
+            {
+                @Html.RadioButton("Gender", 'm', false, new { @class = "form-control", @id = "Gender" })
+                @Html.Label("Male", "Male")
+                @Html.RadioButton("Gender", 'f', true, new { @class = "form-control", @id = "Gender" })
+                @Html.Label("Female", "Female")
+            }
+                  
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </fieldset>
+</form>

@@ -1,24 +1,15 @@
-﻿@model List<FirstMVCApp.ViewModel.UserViewModel>
+﻿@model IEnumerable<FirstMVCApp.ViewModel.UserViewModel>
+
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-</style>
 </head>
 <body>
 
@@ -46,7 +37,14 @@ tr:nth-child(even) {
                 else
                 {
                     <td>Female</td>
-                }               
+                }
+                <td>                    
+                    <a onclick="location.href='@Url.Action("EditUser", "Test")?id=@i.UserViewModelID'" asp-action="EditUser" asp-controller="Test">
+                        Edit</a>
+                     <a onclick="location.href='@Url.Action("DeleteUser", "Test")?id=@i.UserViewModelID'" asp-action="DeleteUser" asp-controller="Test">
+                            Delete</a>
+                </td> 
+
         </tr>
         }     
 

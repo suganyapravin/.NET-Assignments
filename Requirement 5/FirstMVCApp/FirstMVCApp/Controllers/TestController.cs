@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace FirstMVCApp.Controllers
 {
     public class TestController : Controller
@@ -60,6 +61,31 @@ namespace FirstMVCApp.Controllers
             
             return View(context.Set<UserViewModel>().Find(id));
         }
+        [HttpPost]
+        public IActionResult EditUser(UserViewModel model)
+        {
+            var dbContextOption = new DbContextOptionsBuilder<DatabaseContext>()
+               .UseSqlServer("Server=IRIS\\SQLEXPRESS;Database=Suganya;Trusted_Connection=True;TrustServerCertificate=True")
+               .Options;          
+            using var context = new DatabaseContext(dbContextOption);
+            context.Entry(model).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            context.SaveChanges();
+            return RedirectToAction("List");
+        }
+
+        [HttpGet]
+        public IActionResult DeleteUser(int id)
+        {
+            var dbContextOption = new DbContextOptionsBuilder<DatabaseContext>()
+              .UseSqlServer("Server=IRIS\\SQLEXPRESS;Database=Suganya;Trusted_Connection=True;TrustServerCertificate=True")
+              .Options;
+            using var context = new DatabaseContext(dbContextOption);
+            var model = context.Set<UserViewModel>().Find(id);
+            context.Set<UserViewModel>().Remove(model);
+            context.SaveChanges();
+            return RedirectToAction("List");
+
+        }        
 
     }
 }

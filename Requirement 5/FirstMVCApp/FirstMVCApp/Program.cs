@@ -21,8 +21,13 @@ namespace FirstMVCApp
 
             app.MapControllerRoute(
                 name: "TestRoute",
-                pattern: "{controller}/{action=Index}"
+                //pattern: "{controller}/{action=Index}"
+                pattern: "{controller}/{action=Index}/{id?}"
             );
+
+           // app.MapControllerRoute(
+        //  name: "default",
+        //  pattern: "{controller=Home}/{action=Index}/{id?}");
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
