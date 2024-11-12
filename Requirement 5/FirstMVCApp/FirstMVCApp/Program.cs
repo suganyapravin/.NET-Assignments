@@ -1,3 +1,6 @@
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+
 namespace FirstMVCApp
 {
     public class Program
@@ -20,14 +23,9 @@ namespace FirstMVCApp
             }
 
             app.MapControllerRoute(
-                name: "TestRoute",
-                //pattern: "{controller}/{action=Index}"
-                pattern: "{controller}/{action=Index}/{id?}"
-            );
-
-           // app.MapControllerRoute(
-        //  name: "default",
-        //  pattern: "{controller=Home}/{action=Index}/{id?}");
+                name: "default",               
+               pattern: "{controller=Test}/{action=Index}/{id?}"               
+            );        
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

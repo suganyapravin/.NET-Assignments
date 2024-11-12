@@ -1,5 +1,5 @@
-﻿@model IEnumerable<FirstMVCApp.ViewModel.UserViewModel>
-
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<FirstMVCApp.ViewModel.UserViewModel>
 
 @{
     ViewData["Title"] = "Details";
@@ -38,11 +38,13 @@
                 {
                     <td>Female</td>
                 }
-                <td>                    
-                    <a onclick="location.href='@Url.Action("EditUser", "Test")?id=@i.UserViewModelID'" asp-action="EditUser" asp-controller="Test">
-                        Edit</a>
-                     <a onclick="location.href='@Url.Action("DeleteUser", "Test")?id=@i.UserViewModelID'" asp-action="DeleteUser" asp-controller="Test">
-                            Delete</a>
+                <td>
+                    <a asp-route-id="@i.UserViewModelID" asp-action="EditUser" asp-controller="Test">
+                        Edit
+                    </a>
+                    <a asp-route-id="@i.UserViewModelID" asp-action="DeleteUser" asp-controller="Test">
+                        Delete
+                    </a>                  
                 </td> 
 
         </tr>
