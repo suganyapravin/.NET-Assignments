@@ -27,8 +27,8 @@ namespace LMS.Entity
         public int PublishYear { get; set; }
 
         [Required]       
-        [ForeignKey("CategoryName")]
-        public string Genre { get; set; }
+        [ForeignKey("CategoryId")]
+        public int CategoryId { get; set; }
        
         public virtual BookCategory BookCategory { get; set; }     
        

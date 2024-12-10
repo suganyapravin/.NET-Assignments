@@ -17,10 +17,10 @@ namespace LMS.Entity
         [Required]
         public DateTime Checkouttime { get; set; }
 
-        [NotMapped]
+      //  [NotMapped]
         public virtual IEnumerable<Book> Book { get; set; }
 
-        [NotMapped]
+      //  [NotMapped]
         public virtual IEnumerable<Member> Member { get; set; }
 
     }

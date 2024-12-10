@@ -57,8 +57,7 @@ namespace LMS.Entity
         [ForeignKey("Id")]
         public int ViewID { get; set; }
 
-        [NotMapped]
-        public virtual Views Views { get; set; }
+       public virtual Views Views { get; set; }
 
     }
 

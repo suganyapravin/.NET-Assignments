@@ -34,7 +34,6 @@ namespace LMS.Entity
         [ForeignKey("RoleId")]
         public int RoleId { get; set; }
 
-        [NotMapped]
         public virtual Roles Roles { get; set; }
 
 
