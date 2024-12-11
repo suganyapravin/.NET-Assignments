@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
+﻿using Microsoft.AspNetCore.Components.Web.Virtualization;
+using Microsoft.AspNetCore.Http.HttpResults;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -46,18 +47,17 @@ namespace LMS.Entity
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        [ForeignKey("RoleId")]
-        public int RoleId { get; set; }
+        [Required]      
+        public virtual int RoleId { get; set; }
 
-        [NotMapped]
+        [ForeignKey("RoleId")]
         public virtual Roles Roles { get; set; }
 
-        [Required]
-        [ForeignKey("Id")]
-        public int ViewID { get; set; }
+        [Required]     
+        public virtual int ViewID { get; set; }
 
-       public virtual Views Views { get; set; }
+        [ForeignKey("Id")]
+        public virtual Views Views { get; set; }
 
     }
 

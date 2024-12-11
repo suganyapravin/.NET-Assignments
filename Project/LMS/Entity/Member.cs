@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Components.Web.Virtualization;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LMS.Entity
@@ -30,10 +31,10 @@ namespace LMS.Entity
         public DateTime birthdate { get; set; }
 
         //this is always member for a member
-        [Required]
-        [ForeignKey("RoleId")]
-        public int RoleId { get; set; }
+        [Required]        
+        public virtual int RoleId { get; set; }
 
+        [ForeignKey("RoleId")]
         public virtual Roles Roles { get; set; }
 
 

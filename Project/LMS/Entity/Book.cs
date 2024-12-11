@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
+﻿using Microsoft.AspNetCore.Components.Web.Virtualization;
+using Microsoft.AspNetCore.Http.HttpResults;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
@@ -26,10 +27,10 @@ namespace LMS.Entity
 
         public int PublishYear { get; set; }
 
-        [Required]       
+        [Required]     
+        public virtual int CategoryId { get; set; }
+
         [ForeignKey("CategoryId")]
-        public int CategoryId { get; set; }
-       
         public virtual BookCategory BookCategory { get; set; }     
        
     }

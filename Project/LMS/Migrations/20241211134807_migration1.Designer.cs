@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LMS.Migrations
 {
     [DbContext(typeof(LMSContext))]
-    [Migration("20241210175631_firstMigration")]
-    partial class firstMigration
+    [Migration("20241211134807_migration1")]
+    partial class migration1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,17 +38,13 @@ namespace LMS.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("BookCategoryCategoryId")
-                        .HasColumnType("int");
-
                     b.Property<string>("BookTitle")
                         .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
-                    b.Property<string>("Genre")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
 
                     b.Property<string>("ISBN")
                         .IsRequired()
@@ -60,7 +56,7 @@ namespace LMS.Migrations
 
                     b.HasKey("BookId");
 
-                    b.HasIndex("BookCategoryCategoryId");
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Book");
                 });
@@ -139,6 +135,8 @@ namespace LMS.Migrations
 
                     b.HasKey("MemId");
 
+                    b.HasIndex("RoleId");
+
                     b.ToTable("Members");
                 });
 
@@ -156,10 +154,17 @@ namespace LMS.Migrations
                     b.Property<DateTime>("Checkouttime")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("MemId")
+                        .HasColumnType("int");
+
                     b.Property<int>("MemberId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BookId");
+
+                    b.HasIndex("MemId");
 
                     b.ToTable("MemberBorrow");
                 });
@@ -167,10 +172,7 @@ namespace LMS.Migrations
             modelBuilder.Entity("LMS.Entity.RoleViews", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
@@ -179,6 +181,8 @@ namespace LMS.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
 
                     b.ToTable("RoleViews");
                 });
@@ -217,7 +221,7 @@ namespace LMS.Migrations
                         {
                             RoleID = 1,
                             CreatedBy = 0,
-                            CreatedDate = new DateTime(2024, 12, 10, 17, 56, 31, 116, DateTimeKind.Utc).AddTicks(7828),
+                            CreatedDate = new DateTime(2024, 12, 11, 13, 48, 7, 512, DateTimeKind.Utc).AddTicks(7552),
                             IsActive = true,
                             Name = "Librarian",
                             UpdatedBy = 0
@@ -226,7 +230,7 @@ namespace LMS.Migrations
                         {
                             RoleID = 2,
                             CreatedBy = 0,
-                            CreatedDate = new DateTime(2024, 12, 10, 17, 56, 31, 116, DateTimeKind.Utc).AddTicks(8038),
+                            CreatedDate = new DateTime(2024, 12, 11, 13, 48, 7, 512, DateTimeKind.Utc).AddTicks(7743),
                             IsActive = true,
                             Name = "Staff",
                             UpdatedBy = 0
@@ -235,7 +239,7 @@ namespace LMS.Migrations
                         {
                             RoleID = 3,
                             CreatedBy = 0,
-                            CreatedDate = new DateTime(2024, 12, 10, 17, 56, 31, 116, DateTimeKind.Utc).AddTicks(8040),
+                            CreatedDate = new DateTime(2024, 12, 11, 13, 48, 7, 512, DateTimeKind.Utc).AddTicks(7744),
                             IsActive = true,
                             Name = "Member",
                             UpdatedBy = 0
@@ -281,6 +285,8 @@ namespace LMS.Migrations
 
                     b.HasKey("StaffId");
 
+                    b.HasIndex("RoleId");
+
                     b.ToTable("Staff");
                 });
 
@@ -323,11 +329,71 @@ namespace LMS.Migrations
                 {
                     b.HasOne("LMS.Entity.BookCategory", "BookCategory")
                         .WithMany()
-                        .HasForeignKey("BookCategoryCategoryId")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("BookCategory");
+                });
+
+            modelBuilder.Entity("LMS.Entity.Member", b =>
+                {
+                    b.HasOne("LMS.Entity.Roles", "Roles")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Roles");
+                });
+
+            modelBuilder.Entity("LMS.Entity.MemberBorrow", b =>
+                {
+                    b.HasOne("LMS.Entity.Book", "Book")
+                        .WithMany()
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LMS.Entity.Member", "Member")
+                        .WithMany()
+                        .HasForeignKey("MemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Book");
+
+                    b.Navigation("Member");
+                });
+
+            modelBuilder.Entity("LMS.Entity.RoleViews", b =>
+                {
+                    b.HasOne("LMS.Entity.Views", "Views")
+                        .WithMany()
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LMS.Entity.Roles", "Roles")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Roles");
+
+                    b.Navigation("Views");
+                });
+
+            modelBuilder.Entity("LMS.Entity.Staff", b =>
+                {
+                    b.HasOne("LMS.Entity.Roles", "Roles")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Roles");
                 });
 #pragma warning restore 612, 618
         }
